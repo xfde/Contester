@@ -44,18 +44,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /**
-         * Array List for Binding Data from JSON to this List
-         */
+
+
         list = new ArrayList<>();
-        /**
-         * Binding that List to Adapter
-         */
+
         adapter = new MyArrayAdapter(this, list);
 
-        /**
-         * Getting List and Setting List Adapter
-         */
+
+         // Getting List and Setting List Adapter
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,55 +61,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /**
-         * Just to know onClick and Printing Hello Toast in Center.
-         */
-        Toast toast = Toast.makeText(getApplicationContext(), "Click on FloatingActionButton to Load JSON", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+//        Toast toast = Toast.makeText(getApplicationContext(), "Click on FloatingActionButton to Load JSON", Toast.LENGTH_LONG);
+//        toast.setGravity(Gravity.CENTER, 0, 0);
+//        toast.show();
+        if (InternetConnection.checkConnection(getApplicationContext())) {
+            new GetDataTask().execute();
+        } else {
+             Toast.makeText(getApplicationContext(), "Internet Connection Not Available", Toast.LENGTH_LONG).show();
+        }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(@NonNull View view) {
 
-                /**
-                 * Checking Internet Connection
-                 */
-                if (InternetConnection.checkConnection(getApplicationContext())) {
-                    new GetDataTask().execute();
-                } else {
-                    Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 
-    /**
-     * Creating Get Data Task for Getting Data From Web
-     */
+    //Data from web
     class GetDataTask extends AsyncTask<Void, Void, Void> {
 
         ProgressDialog dialog;
         int jIndex;
-        int x;
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            /**
-             * Progress Dialog for User Interaction
-             */
 
-            x=list.size();
-
-            if(x==0)
-                jIndex=0;
-            else
-                jIndex=x;
-
+            jIndex=list.size();
             dialog = new ProgressDialog(MainActivity.this);
-            dialog.setTitle("Loading..."+x);
+            dialog.setTitle("Loading...");
             dialog.setMessage("Importing JSON");
             dialog.show();
         }
@@ -122,47 +93,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            /**
-             * Getting JSON Object from Web Using okHttp
-             */
             JSONObject jsonObject = JSONParser.getDataFromWeb();
 
             try {
-                /**
-                 * Check Whether Its NULL???
-                 */
                 if (jsonObject != null) {
-                    /**
-                     * Check Length...
-                     */
+
                     if(jsonObject.length() > 0) {
-                        /**
-                         * Getting Array named "contacts" From MAIN Json Object
-                         */
+
                         JSONArray array = jsonObject.getJSONArray(Keys.KEY_CONTACTS);
 
-                        /**
-                         * Check Length of Array...
-                         */
 
 
                         int lenArray = array.length();
                         if(lenArray > 0) {
                             for( ; jIndex < lenArray; jIndex++) {
 
-                                /**
-                                 * Creating Every time New Object
-                                 * and
-                                 * Adding into List
-                                 */
-                                MyDataModel model = new MyDataModel();
 
-                                /**
-                                 * Getting Inner Object from contacts array...
-                                 * and
-                                 * From that We will get Name of that Contact
-                                 *
-                                 */
+                                MyDataModel model = new MyDataModel();
+                                //Import Data
                                 JSONObject innerObject = array.getJSONObject(jIndex);
                                 String name = innerObject.getString(Keys.KEY_NAME);
                                 String country = innerObject.getString(Keys.KEY_COUNTRY);
@@ -188,10 +136,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             dialog.dismiss();
-            /**
-             * Checking if List size if more than zero then
-             * Update ListView
-             */
             if(list.size() > 0) {
                 adapter.notifyDataSetChanged();
             } else {
