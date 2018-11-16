@@ -1,10 +1,12 @@
 package com.alexc.databasetest;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -30,7 +33,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private ListView listView;
     private ArrayList<MyDataModel> list;
@@ -42,106 +45,147 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Fresco.initialize(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(this);
+
+        loadFragment(new home());
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
 
 
-        list = new ArrayList<>();
-
-        adapter = new MyArrayAdapter(this, list);
-
-
-         // Getting List and Setting List Adapter
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Snackbar.make(findViewById(R.id.parentLayout), list.get(position).getName() + " => " + list.get(position).getCountry(), Snackbar.LENGTH_LONG).show();
-            }
-        });
-
-//        Toast toast = Toast.makeText(getApplicationContext(), "Click on FloatingActionButton to Load JSON", Toast.LENGTH_LONG);
-//        toast.setGravity(Gravity.CENTER, 0, 0);
-//        toast.show();
-        if (InternetConnection.checkConnection(getApplicationContext())) {
-            new GetDataTask().execute();
-        } else {
-             Toast.makeText(getApplicationContext(), "Internet Connection Not Available", Toast.LENGTH_LONG).show();
-        }
+//        list = new ArrayList<>();
+//
+//        adapter = new MyArrayAdapter(this, list);
+//
+//
+//         // Getting List and Setting List Adapter
+//        listView = (ListView) findViewById(R.id.listView);
+//        listView.setAdapter(adapter);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Snackbar.make(findViewById(R.id.parentLayout), list.get(position).getName() + " => " + list.get(position).getCountry(), Snackbar.LENGTH_LONG).show();
+//            }
+//        });
+//
+////        Toast toast = Toast.makeText(getApplicationContext(), "Click on FloatingActionButton to Load JSON", Toast.LENGTH_LONG);
+////        toast.setGravity(Gravity.CENTER, 0, 0);
+////        toast.show();
+//        if (InternetConnection.checkConnection(getApplicationContext())) {
+//            new GetDataTask().execute();
+//        } else {
+//             Toast.makeText(getApplicationContext(), "Internet Connection Not Available", Toast.LENGTH_LONG).show();
+//        }
 
 
     }
+    private boolean loadFragment (android.support.v4.app.Fragment fragment) {
+        if (fragment != null) {
 
-    //Data from web
-    class GetDataTask extends AsyncTask<Void, Void, Void> {
-
-        ProgressDialog dialog;
-        int jIndex;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            jIndex=list.size();
-            dialog = new ProgressDialog(MainActivity.this);
-            dialog.setTitle("Loading...");
-            dialog.setMessage("Importing JSON");
-            dialog.show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container,fragment)
+                    .commit();
+            return true;
         }
-
-        @Nullable
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            JSONObject jsonObject = JSONParser.getDataFromWeb();
-
-            try {
-                if (jsonObject != null) {
-
-                    if(jsonObject.length() > 0) {
-
-                        JSONArray array = jsonObject.getJSONArray(Keys.KEY_CONTACTS);
-
-
-
-                        int lenArray = array.length();
-                        if(lenArray > 0) {
-                            for( ; jIndex < lenArray; jIndex++) {
-
-
-                                MyDataModel model = new MyDataModel();
-                                //Import Data
-                                JSONObject innerObject = array.getJSONObject(jIndex);
-                                String name = innerObject.getString(Keys.KEY_NAME);
-                                String country = innerObject.getString(Keys.KEY_COUNTRY);
-
-
-                                model.setName(name);
-                                model.setCountry(country);
-
-                                list.add(model);
-                            }
-                        }
-                    }
-                } else {
-
-                }
-            } catch (JSONException je) {
-                Log.i(JSONParser.TAG, "" + je.getLocalizedMessage());
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            dialog.dismiss();
-            if(list.size() > 0) {
-                adapter.notifyDataSetChanged();
-            } else {
-                Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
-            }
-        }
+        return false;
     }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        android.support.v4.app.Fragment fragment = null;
+
+        Log.e("test", "changed");
+
+        switch(item.getItemId()) {
+            case R.id.navigation_home:
+                fragment = new home();
+                break;
+
+            case R.id.navigation_concursuri:
+                fragment = new concursuri();
+                break;
+
+            case R.id.navigation_calendar:
+                fragment = new calendar();
+                break;
+
+
+
+        }
+
+        return loadFragment(fragment);
+    }
+
+//    //Data from web
+//    class GetDataTask extends AsyncTask<Void, Void, Void> {
+//
+//        ProgressDialog dialog;
+//        int jIndex;
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//
+//            jIndex=list.size();
+//            dialog = new ProgressDialog(MainActivity.this);
+//            dialog.setTitle("Loading...");
+//            dialog.setMessage("Importing JSON");
+//            dialog.show();
+//        }
+//
+//        @Nullable
+//        @Override
+//        protected Void doInBackground(Void... params) {
+//
+//            JSONObject jsonObject = JSONParser.getDataFromWeb();
+//
+//            try {
+//                if (jsonObject != null) {
+//
+//                    if(jsonObject.length() > 0) {
+//
+//                        JSONArray array = jsonObject.getJSONArray(Keys.KEY_CONTACTS);
+//
+//
+//
+//                        int lenArray = array.length();
+//                        if(lenArray > 0) {
+//                            for( ; jIndex < lenArray; jIndex++) {
+//
+//
+//                                MyDataModel model = new MyDataModel();
+//                                //Import Data
+//                                JSONObject innerObject = array.getJSONObject(jIndex);
+//                                String name = innerObject.getString(Keys.KEY_NAME);
+//                                String country = innerObject.getString(Keys.KEY_COUNTRY);
+//
+//
+//                                model.setName(name);
+//                                model.setCountry(country);
+//
+//                                list.add(model);
+//                            }
+//                        }
+//                    }
+//                } else {
+//
+//                }
+//            } catch (JSONException je) {
+//                Log.i(JSONParser.TAG, "" + je.getLocalizedMessage());
+//            }
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            super.onPostExecute(aVoid);
+//            dialog.dismiss();
+//            if(list.size() > 0) {
+//                adapter.notifyDataSetChanged();
+//            } else {
+//                Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
+//            }
+//        }
+//    }
 }
