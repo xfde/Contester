@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Databasetest.iml" filepath="$PROJECT_DIR$/Databasetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Contester.iml" filepath="$PROJECT_DIR$/Contester.iml" />
+      <module fileurl="file://C:\Users\alexc\Desktop\Contester\Contester2-be0735a252f741d2a606cdc0c0080f5ac76f1cb1.iml" filepath="C:\Users\alexc\Desktop\Contester\Contester2-be0735a252f741d2a606cdc0c0080f5ac76f1cb1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

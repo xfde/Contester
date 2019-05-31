@@ -1,13 +1,46 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.alexc.databasetest.concursuri">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Le Button" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/buttonOlimpiade"
+        android:layout_width="270dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Olimpiade"
+        android:drawableStart="@drawable/trophy"
+        android:textColor="@android:color/background_light"
+        tools:text="Olimpiade" />
+
+    <Button
+        android:id="@+id/buttonConcursuri"
+        android:layout_width="270dp"
+        android:layout_height="80dp"
+        android:layout_alignStart="@+id/buttonOlimpiade"
+        android:layout_below="@+id/buttonOlimpiade"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Concursuri"
+        android:drawableStart="@drawable/comp"
+        android:textColor="@android:color/background_light"
+        tools:text="Concursuri" />
+
+    <Button
+        android:id="@+id/buttonAltele"
+        android:layout_width="270dp"
+        android:layout_height="80dp"
+        android:layout_alignStart="@+id/buttonConcursuri"
+        android:layout_below="@+id/buttonConcursuri"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text=" Alte Activitati"
+        android:drawableStart="@drawable/book"
+        android:textColor="@android:color/background_light"
+        tools:text="Alte Activitati" />
+</RelativeLayout>

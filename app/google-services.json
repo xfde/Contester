@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "871519586532",
+    "firebase_url": "https://contester-6c94d.firebaseio.com",
+    "project_id": "contester-6c94d",
+    "storage_bucket": "contester-6c94d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871519586532:android:e8cac1f2f1b9c703",
+        "android_client_info": {
+          "package_name": "com.alexc.hacktothefuture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871519586532-bedseha6teruc5teq6mj2s964tm56td9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexc.hacktothefuture",
+            "certificate_hash": "61e72342565308d6e704bbdafceb0bc1c6ef15dc"
+          }
+        },
+        {
+          "client_id": "871519586532-03j3sommjdv8u96lb6kjivn9rkhuc6mm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexc.hacktothefuture",
+            "certificate_hash": "ddf0560915df20aa4e007facc3b413981cfd5270"
+          }
+        },
+        {
+          "client_id": "871519586532-im2sc1ate98aeqq8on17o61q79eb5147.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQSEBF2oehWWFxib_6p_rQgYv3BmkxS2E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871519586532-im2sc1ate98aeqq8on17o61q79eb5147.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
