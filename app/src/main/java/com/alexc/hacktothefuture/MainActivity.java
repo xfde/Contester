@@ -13,16 +13,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth firebaseAuth;
 
-    private DatabaseReference mDatabase;
-    //mDatabase = FirebaseD
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +34,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         /*setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
         Button login_button = findViewById(R.id.login_button);
+        firebaseAuth=FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser()!=null){
+                login_button.setBackgroundResource(R.drawable.ic_profilepic);
+        }
+        else{
+            login_button.setBackgroundResource(R.drawable.ic_login);
+        }
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(firebaseAuth.getCurrentUser()!=null){
+                    startActivity(new Intent(MainActivity.this,ScrollMenu.class));
+                }
+                else{
                 startActivity( new Intent(MainActivity.this,LoginActivity.class));
+                }
             }
         });
+
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
