@@ -8,72 +8,116 @@
 
 
     <Button
-        android:id="@+id/account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            android:id="@+id/account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/pureWhite"
+            android:drawableStart="@drawable/ic_account"
+            android:text="      Account"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/addcontest"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+<!--    <View
+        android:id="@+id/view2"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/pureWhite"
-        android:drawableStart="@drawable/ic_account"
-        android:text="      Account"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
+        android:background="#c0c0c0"
         app:layout_constraintBottom_toTopOf="@+id/addcontest"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <Button
-        android:id="@+id/addcontest"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            android:id="@+id/addcontest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/pureWhite"
+            android:drawableStart="@drawable/ic_addcontest"
+            android:text="      Add a contest"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/themes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+<!--    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/pureWhite"
-        android:drawableStart="@drawable/ic_addcontest"
-        android:text="      Add a contest"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
+        android:background="#c0c0c0"
         app:layout_constraintBottom_toTopOf="@+id/themes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <Button
-        android:id="@+id/themes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            android:id="@+id/themes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/pureWhite"
+            android:drawableStart="@drawable/ic_themes"
+            android:text="      Themes"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+   <!-- <View
+        android:id="@+id/view3"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/pureWhite"
-        android:drawableStart="@drawable/ic_themes"
-        android:text="      Themes"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
+        android:background="#c0c0c0"
         app:layout_constraintBottom_toTopOf="@+id/settings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <Button
-        android:id="@+id/settings"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/pureWhite"
+            android:drawableStart="@drawable/ic_settings"
+            android:text="      Settings"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/about"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+<!--    <View
+        android:id="@+id/view4"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/pureWhite"
-        android:drawableStart="@drawable/ic_settings"
-        android:textAlignment="textStart"
-        android:text="      Settings"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
+        android:background="#c0c0c0"
         app:layout_constraintBottom_toTopOf="@+id/about"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <Button
         android:id="@+id/about"
@@ -82,15 +126,26 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
-        android:textAlignment="textStart"
         android:backgroundTint="@color/pureWhite"
         android:drawableStart="@drawable/ic_about"
         android:text="      About"
+        android:textAlignment="textStart"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+   <!-- <View
+        android:id="@+id/view5"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#c0c0c0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about" />-->
 
     <Button
         android:id="@+id/logout"

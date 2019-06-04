@@ -1,6 +1,7 @@
 package com.alexc.hacktothefuture;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,14 @@ public class ScrollMenu extends AppCompatActivity {
         add_contest=findViewById(R.id.addcontest);
         logmessage=findViewById(R.id.logmessage);
         //back_button.setBackgroundResource(R.drawable.ic_backbutton);
+
+        add_contest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewIntent=new Intent(Intent.ACTION_VIEW, Uri.parse("http://web-contester.herokuapp.com"));
+                startActivity(viewIntent);
+            }
+        });
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

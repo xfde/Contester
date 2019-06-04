@@ -11,9 +11,10 @@
     <string name="slide2_desc">Pregateste-ti echipa si vino la Hackathon.Vei intampina 99 de probleme, dintre care sigur nu dataset-urile.</string>
     <string name="date2">8 Dec la 09:00 _ 9 Dec la 10:00</string>
     <string name="date1">24 Nov la 09:00 _ 25 Nov la 19:00</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="description">Centru de initiere a tinerilor in cercetare Alexandru Proca. Centrul face parte din Institutul de Cercetare al ingineriei electrice din Bucuresti ICPE-CA. Este o activitate profesionala de cercetare stiintifica (temele anterioare au variat de la micro-chirurgie la nanosateliti) pentru tinerii olimpici doritori de cunostere si cercetare intr-un mediu specializat.</string>
 
     <!-- Strings related to login -->
     <string name="name">Name</string>
