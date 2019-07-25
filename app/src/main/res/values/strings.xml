@@ -15,6 +15,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">Sign in</string>
     <string name="description">Centru de initiere a tinerilor in cercetare Alexandru Proca. Centrul face parte din Institutul de Cercetare al ingineriei electrice din Bucuresti ICPE-CA. Este o activitate profesionala de cercetare stiintifica (temele anterioare au variat de la micro-chirurgie la nanosateliti) pentru tinerii olimpici doritori de cunostere si cercetare intr-un mediu specializat.</string>
+    <string name="theapp">Contester is a Java-based Android application that acts as an aggregator for extra-curricular activities. Any high school student can benefit from using this app as it displays all available competitions and/or olympiads in their field(s) of interest in an accesible, easy-to-read way on their own mobile phone.</string>
+    <string name="cloudsync">By using a real-time database, any new contests or any modification to existing ones are updated instantly on our users’ phones. Consequently, this also allows us to use push notifications to bring attention to these changes immediately.</string>
+
 
     <!-- Strings related to login -->
     <string name="name">Name</string>

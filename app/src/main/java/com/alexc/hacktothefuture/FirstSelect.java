@@ -1,15 +1,13 @@
 package com.alexc.hacktothefuture;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,18 +19,28 @@ import java.util.List;
 public class FirstSelect extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    String tip;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view= inflater.inflate(R.layout.fragment_first_select, container, false);
         tabLayout =view.findViewById(R.id.tab_layout);
         viewPager =view.findViewById(R.id.view_pager);
-        setUpTabLayout();
+        //Setting tab navigation
+        //setUpTabLayout();
+
+
+
         return view;
+
     }
 
-    private void setUpTabLayout() {
+//TabLayout for Discussion, suspended for the moment
+
+    /*private void setUpTabLayout() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
         adapter.add(new SecondSelect(), "About");
         adapter.add(new ThirdSelect(), "Discussion");
@@ -41,6 +49,7 @@ public class FirstSelect extends Fragment {
         viewPager.setOffscreenPageLimit(2);
         tabLayout.setupWithViewPager(viewPager);
     }
+
     private class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragmentList = new ArrayList<>();
@@ -74,5 +83,5 @@ public class FirstSelect extends Fragment {
         public int getItemPosition(Object object) {
             return POSITION_NONE;
         }
-    }
+    }*/
 }

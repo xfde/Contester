@@ -9,9 +9,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout
+
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toTopOf="@+id/cl">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="55dp"
+                    app:navigationIcon="?attr/homeAsUpIndicator">
+
+                    <TextView
+                        android:id="@+id/contest_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textSize="18sp" />
+                </androidx.appcompat.widget.Toolbar>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="@drawable/toolbar_dropshadow" />
+
+                </FrameLayout>
+
+            </LinearLayout>
 
             <ToggleButton
                 android:id="@+id/myToggleButton"
@@ -24,7 +63,7 @@
                 android:textOn=""
                 app:layout_constraintBottom_toTopOf="@+id/cardView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imageViewI" />
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
@@ -34,20 +73,19 @@
                 android:elevation="1dp"
                 android:text="Tags: "
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imageViewI" />
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="410dp"
-                android:layout_height="203dp"
+                android:id="@+id/imageViewI"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_marginTop="8dp"
                 android:elevation="9dp"
-                android:src="@drawable/sigla_icpeca"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="388dp"
                 android:layout_height="wrap_content"
@@ -64,14 +102,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/description"
+
                     android:textColor="@color/grey"
+                    android:id="@+id/text_title"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="-18dp"
                     tools:layout_editor_absoluteY="-119dp" />
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+<!--            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -81,16 +120,16 @@
                 app:cardElevation="3dp"
                 app:contentPadding="3dp"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2">
+                app:layout_constraintTop_toBottomOf="@+id/imageViewI">
 
-                <TextView
+&lt;!&ndash;                <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cercetare" />
-            </android.support.v7.widget.CardView>
+                    android:text="Cercetare" />&ndash;&gt;
+            </androidx.cardview.widget.CardView>-->
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,9 +149,9 @@
                     android:text="14 iunie 2019"
                     android:textSize="16sp" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -134,7 +173,7 @@
                     android:text="9:00 am"
                     android:textSize="16sp" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/button"
@@ -149,7 +188,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/moreinfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -167,10 +206,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Organized by: Centrul de initiere in cercetare Alexandru Proca-Coord Dr.Ing Mircea Ignat"
+                android:layout_marginEnd="8dp"
+                android:text="Organized by: "
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button3" />
+                app:layout_constraintTop_toBottomOf="@+id/moreinfo" />
 
-        </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/text_organizator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/moreinfo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 </FrameLayout>

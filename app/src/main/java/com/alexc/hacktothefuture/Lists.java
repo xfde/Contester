@@ -1,32 +1,32 @@
 package com.alexc.hacktothefuture;
 
 
-        import android.os.Bundle;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.app.FragmentManager;
-        import android.support.v4.app.FragmentTransaction;
+import android.net.Uri;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
         import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.ListView;
-        import android.widget.Toast;
+import android.widget.Button;
+import android.widget.ListView;
 
-        import com.google.firebase.database.DataSnapshot;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
         import com.google.firebase.database.DatabaseError;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.GenericTypeIndicator;
         import com.google.firebase.database.ValueEventListener;
-        import com.google.firebase.firestore.FirebaseFirestore;
+        import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-        import java.security.Key;
         import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
 
 
 public class Lists extends Fragment {
@@ -38,27 +38,42 @@ public class Lists extends Fragment {
 
         this.tip = tip;
     }
-    ListView listView;
-    ArrayList<String>list = new ArrayList<>();
+
+    //Variables
+    String mUriS;
+    private ListView listView;
+    private CustomAdapter mAdapter;
+    private  Uri mUri;
+    private String name;
+    private String key;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+    final StorageReference imagesRef= storageRef.child("images");
+    //declaring the arraylist
+    final ArrayList<Item>itemList = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://contester-6c94d.firebaseio.com/");
-        DatabaseReference ref = database.child(tip);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_lists, container, false);
         listView=(ListView)view.findViewById(R.id.listView);
+        //Database Reference
+        DatabaseReference database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://contester-6c94d.firebaseio.com/");
+        DatabaseReference ref = database.child(tip);
 
-        final ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_expandable_list_item_1,list);
-        listView.setAdapter(arrayAdapter);
 
+        //importing data from db to array
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    list.add((String) ds.child("name").getValue());
+
+                    name=(String) ds.child("name").getValue();
+                    mUriS=(String)ds.child("url").getValue();
+                    key=ds.getKey();
+                    itemList.add(new Item(mUriS,name,key,tip));
                 }
-                arrayAdapter.notifyDataSetChanged();
+
+                mAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -66,39 +81,41 @@ public class Lists extends Fragment {
             }
         };
         ref.addListenerForSingleValueEvent(eventListener);
+
+        //setting the adapter
+        mAdapter=new CustomAdapter(getContext(),itemList);
+        listView.setAdapter(mAdapter);
+
+        //setting onclicklsitener for each item in array
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0)
+                if(position>=0&&position<mAdapter.getCount())
                 {
-                    FirstSelect Select=new FirstSelect();
+
+                    Item currentItem = itemList.get(position);
+                    SecondSelect Select=new SecondSelect();
+                    Bundle bundle = new Bundle();
+                    Log.i("Tester",currentItem.getKey());
+                    Bundle keyBundle= new Bundle();
+                    keyBundle.putString("key",tip+"/"+currentItem.getKey());
+                    Bundle parentBundle=new Bundle();
+                    parentBundle.putString("parent",tip);
+                    bundle.putBundle("keyBundle",keyBundle);
+                    bundle.putBundle("parentBundle",parentBundle);
+                    //bundle.putBundle("Key",tip+"/"+currentItem.getKey());
+
+                    Select.setArguments(bundle);
                     FragmentManager fm =getFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, Select);
-                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.fragment_container, Select,"selected");
                     fragmentTransaction.commit();
 
                 }
-                if(position==1)
-                {
-                    SecondSelect Select=new SecondSelect();
-                    FragmentManager fm =getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, Select);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
-                if(position==2)
-                {
-                    ThirdSelect Select=new ThirdSelect();
-                    FragmentManager fm =getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, Select);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
             }
         });
+
+        //return the view of fragment
         return view;
     }
 
