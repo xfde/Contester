@@ -88,10 +88,10 @@
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:id="@+id/rg1"
                         android:orientation="vertical">
                     <RadioButton
-                        android:id="@+id/Default_theme"
+                        android:id="@+id/First_theme"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginEnd="12dp"
@@ -118,7 +118,7 @@
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:id="@+id/rg2"
                         android:orientation="vertical">
                     <RadioButton
                         android:id="@+id/Third_theme"
@@ -177,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/button_custom_feedback"
             android:text="Delete Account"
             android:textColor="@color/whiteF"

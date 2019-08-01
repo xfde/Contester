@@ -4,6 +4,7 @@ package com.alexc.hacktothefuture;
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Patterns;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
     Button logButton;
-
+    private String error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,20 +40,27 @@ public class LoginActivity extends AppCompatActivity {
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                firebaseAuth.signInWithEmailAndPassword(text_email.getText().toString(),text_pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.GONE);
-                        if(task.isSuccessful()){
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                            finish();
+                if(check(text_email.getText().toString(),text_pass.getText())){
+                    progressBar.setVisibility(View.VISIBLE);
+                    firebaseAuth.signInWithEmailAndPassword(text_email.getText().toString(),text_pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressBar.setVisibility(View.GONE);
+                            if(task.isSuccessful()){
+                                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                finish();
 
-                        }else{
-                            Toast.makeText(LoginActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(LoginActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),error,Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -69,6 +77,25 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    boolean check(String email,android.text.Editable pass) {
 
+        if (!isEmailValid(email)){
+            error=getString(R.string.error_invalid_email);
+            return false;
+        }
+        if(pass==null){
+            error=getString(R.string.error_field_required);
+            return false;
+        }
+        if(pass.toString().length()<6)
+        {
+            error=getString(R.string.error_invalid_password);
+            return false;
+        }
+        return true;
+    }
+    boolean isEmailValid(CharSequence email){
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 
 }

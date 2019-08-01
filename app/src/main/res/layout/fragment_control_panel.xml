@@ -67,7 +67,7 @@
             android:textAlignment="center"
             android:textColor="@color/whiteF"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/themes"
+            app:layout_constraintBottom_toTopOf="@+id/topics"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -83,7 +83,7 @@
                 app:layout_constraintStart_toStartOf="parent" />-->
 
         <Button
-            android:id="@+id/themes"
+            android:id="@+id/topics"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -205,16 +205,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageProfile"
             android:layout_width="170dp"
-            android:layout_height="151dp"
+            android:layout_height="150dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_profilepic" />
+         />
 
         <TextView
             android:id="@+id/logmessage"
@@ -224,24 +224,21 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="You are logged as "
+            android:text="You are logged as:  "
             app:layout_constraintBottom_toTopOf="@+id/account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/account"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/logmessage"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/logmessage"
+            app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,14 +67,13 @@
 
         <TextView
             android:id="@+id/theapp"
-            android:layout_width="224dp"
-            android:layout_height="272dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/theapp"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app" />
 
@@ -90,9 +89,9 @@
 
         <TextView
             android:id="@+id/cloudsync"
-            android:layout_width="265dp"
-            android:layout_height="218dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/cloudsync"
             android:textSize="18sp"
@@ -132,12 +131,13 @@
             android:layout_width="352dp"
             android:layout_height="246dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_winners"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/cloudsync" />
 
         <TextView
             android:id="@+id/final_text"
@@ -147,6 +147,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
+            android:gravity="center"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:text="Don’t rely on your teachers and never miss a competition again!"

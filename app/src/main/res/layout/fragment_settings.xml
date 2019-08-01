@@ -7,6 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".SettingsFragment"
     android:background="@drawable/gradient_zinc">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -122,9 +125,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:padding="12dp"
-                android:textColor="#1CB0F6"
                 android:paddingStart="10dp"
                 android:text="Notifications"
+                android:textColor="#1CB0F6"
                 android:textSize="27sp" />
 
             <View
@@ -280,12 +283,12 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
-            android:id="@+id/feedback"
             android:layout_marginBottom="8dp"
             android:background="@drawable/button_custom_feedback"
             android:text="Send Feedback"
@@ -294,18 +297,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:text="&#169; 2019 Contester &#xb7; Version 1.1.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
 
 

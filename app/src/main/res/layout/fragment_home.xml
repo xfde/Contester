@@ -22,26 +22,33 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="4dp"
             app:contentPadding="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/button4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_flipper">
 
-            <ViewFlipper
-                android:id="@+id/t_flipper"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="62dp"
-                android:layout_marginRight="10dp">
+                android:layout_height="wrap_content">
 
-            </ViewFlipper>
+                <ViewFlipper
+                    android:id="@+id/t_flipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp">
+
+                </ViewFlipper>
+            </ScrollView>
         </androidx.cardview.widget.CardView>
 
         <Button
@@ -49,9 +56,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/colorAccent"
             android:drawableEnd="@drawable/ic_iconforw"
             android:text="           Upcoming contests"
@@ -59,8 +65,7 @@
             android:textColor="@color/pureWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

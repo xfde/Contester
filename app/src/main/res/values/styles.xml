@@ -10,4 +10,5 @@
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="android:colorControlActivated">#BCE9FF</item>
     </style>
+
 </resources>

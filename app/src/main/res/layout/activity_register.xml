@@ -122,7 +122,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="serif"
-                    android:text="@string/reg_text"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textSize="18sp" />
