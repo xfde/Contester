@@ -16,7 +16,11 @@ The react.js is also available on github : https://github.com/xfde/contester_rea
 
 
 
-![](https://github.com/xfde/Contester/blob/master/record.gif)
+<image src="https://github.com/xfde/Contester/blob/master/record.gif" height="360px" width="210px"/>
+
+
+
+
 
 
 
