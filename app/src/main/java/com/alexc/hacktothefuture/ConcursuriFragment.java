@@ -41,7 +41,6 @@ public class ConcursuriFragment extends Fragment implements View.OnClickListener
                 FragmentManager fm =getFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fr);
-                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
 
@@ -54,7 +53,6 @@ public class ConcursuriFragment extends Fragment implements View.OnClickListener
                 FragmentManager fm1 = getFragmentManager();
                 FragmentTransaction fragmentTransaction1 = fm1.beginTransaction();
                 fragmentTransaction1.replace(R.id.fragment_container, fr1);
-                fragmentTransaction1.addToBackStack(null);
                 fragmentTransaction1.commit();
                 break;
 
