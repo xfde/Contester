@@ -10,7 +10,7 @@ The website can be found at the address: <link>http://web-contester.herokuapp.co
 
 The react.js is also available on github : https://github.com/xfde/contester_reactjs
 
-#### Download (provisional): http://www.mediafire.com/file/lu9f2mu2ky4113z/Contester.apk/file
+#### Download (provisional) required android 6.0 or up apk min 23: http://www.mediafire.com/file/lu9f2mu2ky4113z/Contester.apk/file
 
 
 
