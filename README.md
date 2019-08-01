@@ -16,7 +16,7 @@ The react.js is also available on github : https://github.com/xfde/contester_rea
 
 
 
-![](https://imgur.com/a/qzOJ2th)
+![](https://github.com/xfde/Contester/blob/master/record.gif)
 
 
 
