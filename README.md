@@ -34,6 +34,9 @@ InfoEducatie Informatii
 -```Ilustratiile au fost generate cu unDraw```
 -```Iconitele au fost importate de pe FlatIcon```
 -```Textele descriptive cat si Imaginile reprezentative(Actual nu in forma finala) pentru fiecare concurs/olimpiada nu sunt orginale, procurate de pe siteurile oficiale sau web```
+-```Imaginiile sunt incarcate cu biblioteca Picassso```
+-```Concursurile sunt extrase din baza de date cu un eventlistener si introdu-se intr-un arraylist cu un custom adapter```
+
 
 
 Proiect Realizat in echipa de Cazacu Alexandru-Cristian si Constantin Alexandru:
