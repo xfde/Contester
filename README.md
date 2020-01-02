@@ -29,7 +29,7 @@ The react.js is also available on github : https://github.com/xfde/contester_rea
 
 
 -----------------------------
-InfoEducatie Informatii
+Additional Info
 
 -```Ilustratiile au fost generate cu unDraw```
 
@@ -39,21 +39,4 @@ InfoEducatie Informatii
 
 -```Imaginiile sunt incarcate cu biblioteca Picassso```
 
--```Concursurile sunt extrase din baza de date cu un eventlistener si introdu-se intr-un arraylist cu un custom adapter```
-
-
-
-Proiect Realizat in echipa de Cazacu Alexandru-Cristian si Constantin Alexandru:
-* `Cazacu Alexandru-Cristian`
-  * `Realizat Design Aplicatie si Site Web`
-  * `Realizat Meniu navigare Aplicatie`
-  * `Realizat Documentare Concursuri`
-  
- 
-* `Constantin Alexandru`
-  * `Realizat Baza de date firebase`
-  * `Realizat Continutul Fragmentelor si Meniurilor+functionalitati`
-  * `Realizat Site Web`
-  
-  Documentatie tehnica:
-  Contester este o aplicatie pentru sistemul de operare Android realizata in Android Studio (Limbaj de Programare:```Java```). Aceasta consta in trei interfete principale(```Home```,```Concursuri```,```Calendar```) si un Panou de Control cu mai multe optiuni(```Setari```,```About```,```Add a Contest```, etc.). Navigarea in aplicatie se realizeaza prin fragmente avand activitati doar cand se schimba focusul principal al actiunilor(```Register```,```Login```,```Main```,```Control Panel```). Scopul principal al aplicatiei este de a oferi un loc centralizat si usor de folosit pentru toate concursurile adresate liceenilor. Astfel, aplicatia foloseste pentru back-end o baza de date in timp real (```Google Firebase```), in care sunt stocate concursurile, detaliile, imaginile dar si informatiile utilizatorului. Prin intermediul bazei de date putem trimite notficari(atat pe email cat si pe telefon) pentru a anunta deadlineuri si modificari. Pentru adougarea concursurilor in baza de date, am realizat o interfata Web cu ```react.js```, utilizand in preponderenta biblioteca ```MaterialUI``` pentru crearea elemetelor de design. Interfata Web este destinata in mod exclusiv organizatorilor de concursuri, care se pot autentifica cu un cont aprobat de catre Administratorii platformei si pot adouga noi concursuri sau updata pe cele existente .
+-```Concursurile sunt extrase din baza de date cu un eventlistener si introduse intr-un arraylist cu un custom adapter```
